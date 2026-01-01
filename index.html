@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>QUẢN LÝ CÔNG VIỆC BẰNG AI</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Quản lý công việc thông minh bằng AI – Mỗi người một không gian riêng" />
+  <meta name="author" content="LamQuocHoan" />
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= LOADING ================= -->
+<div id="app-loading">
+  <div class="loading-spinner"></div>
+  <p>Đang khởi tạo không gian thông minh...</p>
+</div>
+
+<!-- ================= LANDING PAGE ================= -->
+<section id="landing-page" class="page hidden">
+
+  <div class="landing-container">
+
+    <h1 class="app-title">QUẢN LÝ CÔNG VIỆC BẰNG AI</h1>
+
+    <p class="app-subtitle">
+      Mỗi đường link là một không gian quản lý công việc riêng biệt – vĩnh viễn.
+    </p>
+
+    <button id="create-space-btn" class="primary-btn">
+      ✨ TẠO KHÔNG GIAN RIÊNG
+    </button>
+
+    <div class="link-box">
+      <input type="text" id="private-link" readonly placeholder="Link riêng của bạn sẽ xuất hiện tại đây">
+      <button id="copy-link-btn" title="Sao chép link">
+        <i class="ri-file-copy-line"></i>
+      </button>
+    </div>
+
+    <footer class="landing-footer">
+      <p>Được tạo bởi: <strong>LamQuocHoan</strong></p>
+    </footer>
+
+  </div>
+
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+<section id="dashboard-page" class="page hidden">
+
+  <!-- Help -->
+  <button id="help-btn" title="Hướng dẫn">
+    <i class="ri-question-line"></i>
+  </button>
+
+  <!-- Clock -->
+  <div id="live-clock"></div>
+
+  <!-- Welcome Modal -->
+  <div id="welcome-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>👋 Xin chào bạn!</h2>
+      <p>
+        Tui là hệ thống quản lý công việc thông minh được tạo bởi Lam Quoc Hoan.<br>
+        Cậu tên gì thế?
+      </p>
+      <input type="text" id="user-name-input" placeholder="Nhập tên của bạn">
+      <button id="start-btn" class="primary-btn">BẮT ĐẦU</button>
+    </div>
+  </div>
+
+  <!-- AI Message -->
+  <div id="ai-message-box"></div>
+
+  <!-- Input -->
+  <div class="task-input-bar">
+    <input type="text" id="task-input" placeholder="Hãy nhập công việc và thời gian cụ thể">
+    <button id="add-task-btn">THÊM CÔNG VIỆC</button>
+  </div>
+
+  <!-- Main Layout -->
+  <div class="calendar-layout">
+
+    <!-- THIS WEEK -->
+    <div class="calendar-week current-week">
+      <h2 class="week-title">TUẦN NÀY</h2>
+      <div class="calendar-grid" id="current-week-grid"></div>
+      <div class="ai-reminder-box" id="ai-reminder"></div>
+    </div>
+
+    <!-- NEXT WEEK -->
+    <div class="calendar-week next-week">
+      <h2 class="week-title">TUẦN SAU</h2>
+      <div class="calendar-grid small" id="next-week-grid"></div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Actions -->
+  <div class="bottom-actions">
+    <button id="history-btn">
+      📘 LỊCH SỬ
+    </button>
+    <button id="future-btn">
+      🌸 TƯƠNG LAI
+    </button>
+  </div>
+
+  <footer class="dashboard-footer">
+    <span>Được tạo bởi: LamQuocHoan</span>
+  </footer>
+
+</section>
+
+<!-- ================= MODALS ================= -->
+
+<!-- Guide Modal -->
+<div id="guide-modal" class="modal hidden">
+  <div class="modal-content large">
+    <h2>📌 HƯỚNG DẪN SỬ DỤNG</h2>
+    <p>Hãy nhập công việc + thời gian cụ thể rồi nhấn <strong>[THÊM CÔNG VIỆC]</strong> để tự động được thêm vào lịch nhé!</p>
+    <p>Ở phần <strong>LỊCH SỬ</strong>, bạn có thể xem lại công việc của 4 tuần gần nhất.</p>
+    <p>Ở phần <strong>TƯƠNG LAI</strong>, bạn có thể xem công việc của 4 tuần sắp tới.</p>
+    <p>Những công việc trôi qua quá 4 tuần sẽ bị xóa mất đó nha.</p>
+    <p><em>Tui là Lâm Quốc Hoàn, hi vọng sẽ giúp được bạn phần nào đó hehehehe</em></p>
+    <button class="primary-btn close-modal">TRỞ LẠI</button>
+  </div>
+</div>
+
+<!-- Overlay -->
+<div id="overlay" class="hidden"></div>
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
