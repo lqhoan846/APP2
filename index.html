@@ -1,74 +1,108 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>QUẢN LÝ CÔNG VIỆC BẰNG AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="LamQuocHoan">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="Quản lý công việc cá nhân bằng AI – Mỗi link là một không gian riêng"/>
+  <meta name="author" content="LamQuocHoan"/>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
 
 <!-- LOADING -->
-<div id="loading">
-  <div class="spinner"></div>
+<div id="app-loading">
+  <div class="loading-spinner"></div>
   <p>Đang khởi tạo không gian thông minh...</p>
 </div>
 
-<!-- LANDING PAGE -->
-<section id="landing" class="hidden">
-  <h1>QUẢN LÝ CÔNG VIỆC BẰNG AI</h1>
-  <p>Mỗi đường link là một không gian quản lý công việc vĩnh viễn</p>
+<!-- LANDING -->
+<section id="landing-page" class="page hidden">
+  <div class="landing-container">
+    <h1 class="app-title">QUẢN LÝ CÔNG VIỆC BẰNG AI</h1>
+    <p class="app-subtitle">
+      Mỗi đường link là một không gian quản lý công việc cá nhân – vĩnh viễn.
+    </p>
 
-  <button id="createLink">✨ TẠO KHÔNG GIAN RIÊNG</button>
+    <button id="create-space-btn" class="primary-btn">
+      ✨ TẠO KHÔNG GIAN RIÊNG
+    </button>
 
-  <div class="link-box">
-    <input id="privateLink" readonly placeholder="Link riêng của bạn sẽ xuất hiện tại đây">
-    <button id="copyLink">📋</button>
+    <div class="link-box">
+      <input id="private-link" readonly placeholder="Link riêng của bạn sẽ xuất hiện tại đây"/>
+      <button id="copy-link-btn"><i class="ri-file-copy-line"></i></button>
+    </div>
+
+    <footer class="landing-footer">
+      Được tạo bởi: <strong>LamQuocHoan</strong>
+    </footer>
   </div>
-
-  <footer>Được tạo bởi: <strong>LamQuocHoan</strong></footer>
 </section>
 
 <!-- DASHBOARD -->
-<section id="dashboard" class="hidden">
+<section id="dashboard-page" class="page hidden">
 
-  <button id="helpBtn">❓</button>
-  <div id="clock"></div>
+  <button id="help-btn"><i class="ri-question-line"></i></button>
+  <div id="live-clock"></div>
 
-  <!-- AI MESSAGE -->
-  <div id="aiBox"></div>
-
-  <!-- INPUT -->
-  <div class="input-bar">
-    <input id="taskInput" placeholder="Hãy nhập công việc và thời gian cụ thể">
-    <button id="addTask">THÊM CÔNG VIỆC</button>
+  <!-- Welcome -->
+  <div id="welcome-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>👋 Xin chào bạn!</h2>
+      <p>
+        Tui là hệ thống quản lý công việc thông minh được tạo bởi Lam Quoc Hoan.<br/>
+        Cậu tên gì thế?
+      </p>
+      <input id="user-name-input" placeholder="Nhập tên của bạn"/>
+      <button id="start-btn" class="primary-btn">BẮT ĐẦU</button>
+    </div>
   </div>
 
-  <!-- CALENDAR -->
-  <div class="calendar">
-    <div class="week current">
-      <h2>TUẦN NÀY</h2>
-      <div id="weekGrid" class="week-grid"></div>
+  <!-- AI Messenger -->
+  <div id="ai-message-box"></div>
+
+  <!-- Input -->
+  <div class="task-input-bar">
+    <input id="task-input" placeholder="Hãy nhập công việc và thời gian cụ thể"/>
+    <button id="add-task-btn">THÊM CÔNG VIỆC</button>
+  </div>
+
+  <!-- Calendar -->
+  <div class="calendar-layout">
+    <div class="calendar-week current-week">
+      <h2 class="week-title">TUẦN NÀY</h2>
+      <div id="current-week-grid" class="calendar-grid"></div>
+      <div id="ai-reminder" class="ai-reminder-box"></div>
     </div>
 
-    <div class="week next">
-      <h2>TUẦN SAU</h2>
-      <div id="nextWeekGrid" class="week-grid small"></div>
+    <div class="calendar-week next-week">
+      <h2 class="week-title">TUẦN SAU</h2>
+      <div id="next-week-grid" class="calendar-grid small"></div>
     </div>
   </div>
 
   <div class="bottom-actions">
-    <button id="historyBtn">📘 LỊCH SỬ</button>
-    <button id="futureBtn">🌸 TƯƠNG LAI</button>
+    <button id="history-btn">📘 LỊCH SỬ</button>
+    <button id="future-btn">🌸 TƯƠNG LAI</button>
   </div>
 
-  <footer class="dash-footer">Được tạo bởi: LamQuocHoan</footer>
+  <footer class="dashboard-footer">
+    Được tạo bởi: LamQuocHoan
+  </footer>
 </section>
+
+<div id="overlay" class="hidden"></div>
 
 <script src="script.js"></script>
 </body>
